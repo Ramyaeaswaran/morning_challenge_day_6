@@ -1,3 +1,4 @@
+import 'dart:math';
 // Challenge 1
 // A number is a perfect number if is equal to sum of its proper divisors, that is, sum of its positive divisors excluding the number itself.
 // Write a function to check if a given number is perfect or not.
@@ -14,6 +15,7 @@ class Point {
     this.x = x;
     this.y = y;
   }
+
 }
 
 // Challenge 2
@@ -23,12 +25,31 @@ class Point {
 // Bottom-left: (-1, 0)
 // Top-right: (2,3)
 
-
+rectangle(List<Point> p){
+List<int> x=p.map((Point pt)=>pt.x).toList();
+List<int> y=p.map((Point pt)=>pt.y).toList();
+int xmin=x.reduce(min);
+int ymin=y.reduce(min);
+int xmax=x.reduce(max);
+int ymax=y.reduce(max);
+print('Bottom-left: ($xmin , $ymin)');
+print('Top-right: ($xmax , $ymax)');
+}
 
 void main() {
   // Test the function defined above with given List of points
   List<Point> points = [Point(-1, 0), Point(2, 2), Point(1, 3)];
-
+  rectangle(points);
   // Test the perfect number function here
-
+  int i,n=15, Sum = 0 ;
+  for(i = 1 ; i < n-1 ; i++)
+  {
+    if(n % i == 0)
+      Sum = Sum + i ;
+  }
+  if (Sum == n){
+    print("True") ;
+  } else {
+    print("False");
+  }
 }
